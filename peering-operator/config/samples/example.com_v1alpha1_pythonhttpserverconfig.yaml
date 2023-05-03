@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pythonhttpserverconfig-deployment
+  labels:
+    app: pythonhttpserverconfig
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: pythonhttpserverconfig
+  template:
+    metadata:
+      labels:
+        app: pythonhttpserverconfig
+    spec:
+      containers:
+      - name: pythonhttpserverconfig
+        image: myregistry.example.com/my-operator/pythonhttpserverconfig:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: SERVER_PORT
+          value: "80"

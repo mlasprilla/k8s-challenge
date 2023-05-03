@@ -1,0 +1,13 @@
+apiVersion: example.com/v1alpha1
+kind: PythonHTTPServerConfig
+metadata:
+  name: my-python-http-server
+spec:
+  replicas: 3
+  port: 80
+  ports:
+    - name: secondary-port
+      port: 8080
+    - name: admin-port
+      port: 8000
+  host: my-python-http-server.example.com

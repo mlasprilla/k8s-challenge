@@ -1,0 +1,31 @@
+# permissions for end users to edit pythonhttpserverconfigs.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: pythonhttpserverconfig-editor-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: peering-operator
+    app.kubernetes.io/part-of: peering-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: pythonhttpserverconfig-editor-role
+rules:
+- apiGroups:
+  - example.com.example.com
+  resources:
+  - pythonhttpserverconfigs
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - example.com.example.com
+  resources:
+  - pythonhttpserverconfigs/status
+  verbs:
+  - get
